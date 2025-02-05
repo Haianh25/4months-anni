@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4 Months Anniversary Timeline</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap');
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Dancing Script', cursive;
+            background-color: #FFD1DC;
+            background-image: url('mit.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: #A83F69;
+            padding: 20px;
+            font-size: 1.2rem; /* Increased font size */
+        }
+
+        h1 {
+            text-align: center;
+            color: #A83F69;
+            font-size: 4rem; /* Increased font size */
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: #FF6699;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.6s ease-out;
+        }
+
+        .timeline-item.left {
+            left: 0;
+        }
+
+        .timeline-item.right {
+            left: 50%;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: -10px;
+            background-color: #E75480;
+            border: 4px solid #FFF5E1;
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .timeline-item.right::before {
+            left: -10px;
+        }
+
+        .timeline-content {
+            padding: 20px;
+            background-color: #FFF5E1;
+            position: relative;
+            border-radius: 10px;
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .timeline-content h2 {
+            margin-top: 0;
+            color: #A83F69;
+            font-size: 2rem; /* Increased font size */
+        }
+
+        .timeline-content p {
+            margin: 10px 0 0;
+            line-height: 1.6;
+            font-size: 1.2rem; /* Increased font size */
+        }
+
+        .timeline-item.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media screen and (max-width: 768px) {
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+
+            .timeline-item.right {
+                left: 0;
+            }
+
+            .timeline-item::before {
+                left: -10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>4 Months Anniversary Timeline</h1>
+    <div class="timeline">
+        <div class="timeline-item left">
+            <div class="timeline-content">
+                <h2>2:00 PM - Picking Up</h2>
+                <p>Pick up my babi.</p>
+            </div>
+        </div>
+
+        <div class="timeline-item right">
+            <div class="timeline-content">
+                <h2>2:30 PM - Photo Shoot</h2>
+                <p>Tet holiday content pictures together at Darklight.lab.</p>
+            </div>
+        </div>
+
+        <div class="timeline-item left">
+            <div class="timeline-content">
+                <h2>6:30 PM - Dinner Time</h2>
+                <p>Enjoy dinnerr at Let's Sushi at 303 Trần Đại Nghĩa, Trương Định, Hai Bà Trưng.</p>
+            </div>
+        </div>
+
+        <div class="timeline-item right">
+            <div class="timeline-content">
+                <h2>9:00 PM - coffee time</h2>
+                <p>Have some coffee at Tám at 19 Hàng Chĩnh,Hoàn Kiếm.</p>
+            </div>
+        </div>
+
+        <div class="timeline-item left">
+            <div class="timeline-content">
+                <h2>11:00 PM - Goodbye</h2>
+                <p>Take babi back home.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function isInViewport(el) {
+            const rect = el.getBoundingClientRect();
+            return (
+                rect.top >= 0 &&
+                rect.left >= 0 &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+            );
+        }
+
+        function activateTimeline() {
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            let delay = 0;
+
+            timelineItems.forEach((item, index) => {
+                if (isInViewport(item)) {
+                    setTimeout(() => {
+                        item.classList.add('active');
+                    }, delay);
+                    delay += 500;
+                }
+            });
+        }
+
+        window.addEventListener('scroll', activateTimeline);
+        activateTimeline();
+    </script>
+    
+</body>
+</html>
